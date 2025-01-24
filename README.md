@@ -13,34 +13,34 @@ This repository contains solution for problem: 6 given as part of Information Re
     PUT /netflix
     {
         "settings": {
-        "analysis": {
-            "analyzer": {
-            "my_analyzer": {
-                "type": "custom",
-                "tokenizer": "whitespace",
-                "filter": [
-                "lowercase",
-                "2_grams"
-                ]
-            }
-            },
-            "filter": {
-            "2_grams": {
-                "type": "ngram",
-                "min_gram": 2,
-                "max_gram": 2
-            }
-            }
-        }
+           "analysis": {
+               "analyzer": {
+                  "my_analyzer": {
+                      "type": "custom",
+                      "tokenizer": "whitespace",
+                      "filter": [
+                         "lowercase",
+                         "2_grams"
+                      ]
+                  }
+               },
+               "filter": {
+                  "2_grams": {
+                      "type": "ngram",
+                      "min_gram": 2,
+                      "max_gram": 2
+                  }
+               }
+           }
         },
         
         "mappings": {
-        "properties": {
-            "director": {
-            "type": "text",
-            "analyzer": "my_analyzer"
-            }
-        }
+           "properties": {
+               "director": {
+                  "type": "text",
+                  "analyzer": "my_analyzer"
+               }
+           }
         }
     }
     ```
@@ -51,9 +51,7 @@ This repository contains solution for problem: 6 given as part of Information Re
 
     with open('./netflix.json') as f:
         data = json.load(f)
-
-
-
+    
     for key in data:
         add_str = { "index" : { "_id": key} }
 
